@@ -1,20 +1,20 @@
-/* H-TASK: 
+/*H2-TASK: 
 
-shunday function tuzing, u integerlardan iborat arrayni argument sifatida qabul qilib, faqat positive qiymatlarni olib string holatda return qilsin
-MASALAN: getPositive([]) return qiladi "12"
+Shunday function tuzing, unga string argument pass bolsin. Function ushbu agrumentdagi digitlarni yangi stringda return qilsin
+MASALAN: getDigits("m14i1t") return qiladi "141"
 
-@MITASK
+@steezyworld MITASK
 */
 
-function getPositive(getNumber: any) {
-  let ans: number[] = [];
+function getDigits(str: string): string {
+  let ans = [];
 
-  for (let i = 0; i < getNumber.length; i++) {
-    if (getNumber[i] > 0) {
-      ans.push(getNumber[i]);
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] >= "0" && str[i] <= "9") {
+      ans.push(str[i]);
     }
   }
   return ans.join("");
 }
 
-console.log(getPositive([1, -4, 2]));
+console.log(getDigits("m14i1t"));
