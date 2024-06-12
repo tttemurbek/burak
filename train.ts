@@ -5,7 +5,13 @@
         pascal => class case
         kebab => folder case
         css => snake case
--   error handlings
+-   error handlings        
+*/
 
-        
-        */
+/* 
+traditional api
+rest api
+graphql api
+*/
+
+/* */
