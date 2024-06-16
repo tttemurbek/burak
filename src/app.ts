@@ -1,5 +1,5 @@
 import express from "express";
-import path from "path";
+import path from "path"; // core model
 import router from "./router";
 import routerAdmin from "./routerAdmin";
 import morgan from "morgan";
