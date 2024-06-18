@@ -1,8 +1,8 @@
 // controllerlarni har dayim object usilinda paydalanamiz
-import { Request, Response } from "express";
-import { T } from "../libs/types/common";
-import MemberService from "../models/Member.service";
-import { MemberInput, LoginInput } from "../libs/types/member";
+import { Request, Response } from "express"; // types/expressdan Request ha'm Response typelarin shaqirip alip atirmiz
+import { T } from "../libs/types/common"; // T atli interface di shaqirip alip atirmiz
+import MemberService from "../models/Member.service"; // MemberServiceModule di shaqirip alip atirmiz
+import { MemberInput, LoginInput } from "../libs/types/member"; 
 import { MemberType } from "../libs/enums/member.enum";
 
 const restaurantController: T = {};
@@ -15,17 +15,9 @@ restaurantController.goHome = (req: Request, res: Response) => {
   }
 };
 
-restaurantController.getLogin = (req: Request, res: Response) => {
-  try {
-    res.send("Login page");
-  } catch (err) {
-    console.log("Error getLogin", err);
-  }
-};
-
 restaurantController.getSignup = (req: Request, res: Response) => {
   try {
-    res.send("Signup page");
+    res.send("Signup page"); // negizi bul jerde "FORM" boliwi kerek ha'm oni user toltirip basadi sol waqitta post iske tusedi
   } catch (err) {
     res.send(err);
   }
@@ -46,6 +38,14 @@ restaurantController.processSignup = async (req: Request, res: Response) => {
   } catch (err) {
     console.log("Error processSignup", err);
     res.send(err);
+  }
+};
+
+restaurantController.getLogin = (req: Request, res: Response) => {
+  try {
+    res.send("Login page");
+  } catch (err) {
+    console.log("Error getLogin", err);
   }
 };
 
