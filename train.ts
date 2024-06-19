@@ -1,10 +1,31 @@
-/* app.ts dafi router bolimenen baslap MVC iske tusedi desekte boaldi, mvc ne?
-[modul, view, controller] 
-1. modul ekige bolinedi => service modul ha'm schema modul
-schema modul service modulge jardemshi bolip esaplanadi
-onin missiyasi databasega barip magliwmatlardi jazip qaytiw yamasa magliwmatlardi alip qaytiw
-2. view => bizde bul ejs
-3. controller => routerda kirip kelgen sorawlar birinshi bolip controllerga jetip keledi ha'm controllerden bolisitirilip beriledi
+/* J-TASK: 
 
+Shunday function yozing, u string qabul qilsin va string ichidagi eng uzun sozni qaytarsin.
+MASALAN: findLongestWord("I come from Uzbekistan") return "Uzbekistan"
 
+@MITASK
 */
+
+// JavaScript code to for the above approach..
+
+function findLongestWord(str: string) {
+  const words = str.split(" ");
+
+  const wordLengths = words.map((word) => ({ word, length: word.length }));
+
+  const longestWord = wordLengths.reduce((before, current) => {
+    if (before.length > current.length) {
+      return before;
+    } else {
+      return current;
+    }
+  });
+
+  return longestWord.word;
+}
+
+console.log(
+  findLongestWord(
+    "Hello guys this is geeksforgeeks where geeksforgetks learn programming"
+  )
+);
