@@ -1,0 +1,1 @@
+console.log("FRONT_END JAVASCRIPT STARTS");
