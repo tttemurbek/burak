@@ -33,7 +33,7 @@ app.use(
   session({
     secret: String(process.env.SESSION_SECRET),
     cookie: {
-      maxAge: 1000 * 3600 * 3, // 3 hrs
+      maxAge: 1000 * 3600 * 6, // 6 hrs
     },
     store: store, //18 qatardagi storedi berip atirmiz
     resave: true, // 10:30-13:30, false bolsa ozgermeydi
@@ -46,7 +46,7 @@ app.set("views", path.join(__dirname, "views")); // views filen kor dep aytip at
 app.set("view engine", "ejs"); // sonin ishinde ejs formattagi file lardi kor dep aytip atirmiz
 
 /** 4-ROUTERS **/
-app.use("/ADMIN", routerAdmin); // BSSR: EJS, SSR -server-side-rendering, usi jerden baslap MVC baslanadi
+app.use("/admin", routerAdmin); // BSSR: EJS, SSR -server-side-rendering, usi jerden baslap MVC baslanadi
 app.use("/", router); // SPA: REACT- single-page-application
 
 export default app;

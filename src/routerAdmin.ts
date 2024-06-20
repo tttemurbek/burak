@@ -22,5 +22,6 @@ routerAdmin
   .get("/login", restaurantController.getLogin)
   .post("/login", restaurantController.processLogin);
 
+routerAdmin.get("/logout", restaurantController.logout);
 routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 export default routerAdmin;
