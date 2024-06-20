@@ -11,6 +11,15 @@ import { MORGAN_FORMAT } from "./libs/types/config";
 ol ozinin ishine method[get, post, put, delete], url[/, /admin etc], response-time[ketken waqit],
 status[200-ok, 404-not found etc] */
 
+import session from "express-session";
+import ConnectMongoDB from "connect-mongodb-session";
+
+const MongoDBStore = ConnectMongoDB(session);
+const store = new MongoDBStore({
+  uri: String(process.env.MONGO_URL),
+  collection: "sessions",
+});
+
 /** 1-ENTERANCE **/
 
 const app = express(); // instance or Creating an instance of the Express application
@@ -20,6 +29,17 @@ app.use(express.json()); // rest api orqali keladigan json formatdagi data ni ot
 app.use(morgan(MORGAN_FORMAT)); // 9-qatarda shaqirip algan MORGAN_FORMAT bolip esaplanadi, bulda middleware
 
 /** 2-SESSIONS **/
+app.use(
+  session({
+    secret: String(process.env.SESSION_SECRET),
+    cookie: {
+      maxAge: 1000 * 3600 * 3, // 3 hrs
+    },
+    store: store, //18 qatardagi storedi berip atirmiz
+    resave: true, // 10:30-13:30, false bolsa ozgermeydi
+    saveUninitialized: true,
+  })
+);
 
 /** 3-VIEWS **/
 app.set("views", path.join(__dirname, "views")); // views filen kor dep aytip atirmiz
