@@ -1,25 +1,14 @@
-/* K-TASK: 
+function reverseSentence(str: string): string {
+  const words: string[] = str.split(" ");
 
-Shunday function yozing, u string qabul qilsin va string ichidagi unli harflar sonini qaytarsin.
-MASALAN: countVowels("string") return 1;
+  const reversedWords: string[] = [];
 
-@MITASK*/
-
-function countVowels(str: string) {
-  let vowelsCount = 0;
-
-  for (var i = 0; i <= str.length - 1; i++) {
-    if (
-      str.charAt(i) == "a" ||
-      str.charAt(i) == "e" ||
-      str.charAt(i) == "i" ||
-      str.charAt(i) == "o" ||
-      str.charAt(i) == "u"
-    ) {
-      vowelsCount += 1;
-    }
+  for (let i = 0; i < words.length; i++) {
+    const reversedWord: string = words[i].split("").reverse().join("");
+    reversedWords.push(reversedWord);
   }
-  return vowelsCount;
+
+  return reversedWords.join(" ");
 }
 
-console.log(countVowels("string"));
+console.log(reverseSentence("i love coding"));
