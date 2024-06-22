@@ -1,6 +1,7 @@
 import express from "express"; // express shaqilip alip atirmiz
 const routerAdmin = express.Router(); //expresstin Router methodin routerAdminga berip atirmiz
 import restaurantController from "./controllers/restaurant.controller"; // rest.controllerdi shaqirip alip atirmiz
+import productController from "./controllers/product.controller";
 
 // Restaurant
 routerAdmin.get("/", restaurantController.goHome); // get metod i qanday method, ol tek data alip browserda korsetip beredi
@@ -24,4 +25,10 @@ routerAdmin
 
 routerAdmin.get("/logout", restaurantController.logout);
 routerAdmin.get("/check-me", restaurantController.checkAuthSession);
+
+/* Products*/
+routerAdmin.get("/product/all", productController.getAllProducts);
+routerAdmin.post("/product/create", productController.createNewProduct);
+routerAdmin.post("/product/:id", productController.updateChosenProduct); //:id is "param"
+
 export default routerAdmin;
