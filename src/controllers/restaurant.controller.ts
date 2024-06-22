@@ -1,5 +1,5 @@
 // controllerlarni har dayim object usilinda paydalanamiz
-import { Request, Response } from "express"; // types/expressdan Request ha'm Response typelarin shaqirip alip atirmiz
+import { NextFunction, Request, Response, response } from "express"; // types/expressdan Request ha'm Response typelarin shaqirip alip atirmiz
 import { T } from "../libs/types/common"; // T atli interface di shaqirip alip atirmiz
 import MemberService from "../models/Member.service"; // MemberServiceModule di shaqirip alip atirmiz
 import { MemberInput, LoginInput, AdminRequest } from "../libs/types/member"; //MemberInputti biz processSignup da isletip atirmiz,
@@ -118,6 +118,22 @@ restaurantController.checkAuthSession = async (
   } catch (err) {
     console.log("Error checkAuthSession", err);
     res.send(err);
+  }
+};
+
+restaurantController.verifyRestaurant = (
+  req: AdminRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  if (req.session?.member?.memberType === MemberType.RESTAURANT) {
+    req.member = req.session.member;
+    next();
+  } else {
+    const message = Message.NOT_AUTHENTICATED;
+    res.send(
+      `<script> alert("${message}"); window.location.replace("/admin/login") </script>`
+    );
   }
 };
 
