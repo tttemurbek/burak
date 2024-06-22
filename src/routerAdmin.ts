@@ -2,6 +2,7 @@ import express from "express"; // express shaqilip alip atirmiz
 const routerAdmin = express.Router(); //expresstin Router methodin routerAdminga berip atirmiz
 import restaurantController from "./controllers/restaurant.controller"; // rest.controllerdi shaqirip alip atirmiz
 import productController from "./controllers/product.controller";
+import makeUploader from "./libs/utils/uploader";
 
 // Restaurant
 routerAdmin.get("/", restaurantController.goHome); // get metod i qanday method, ol tek data alip browserda korsetip beredi
@@ -17,7 +18,11 @@ call qilip atirmiz, bul jerde call iske tusedi, define bolimi restaurantControll
 */
 routerAdmin
   .get("/signup", restaurantController.getSignup)
-  .post("/signup", restaurantController.processSignup);
+  .post(
+    "/signup",
+    makeUploader("members").single("memberImage"),
+    restaurantController.processSignup
+  );
 
 routerAdmin
   .get("/login", restaurantController.getLogin)
@@ -32,7 +37,17 @@ routerAdmin.get(
   restaurantController.verifyRestaurant,
   productController.getAllProducts
 );
-routerAdmin.post("/product/create", productController.createNewProduct);
-routerAdmin.post("/product/:id", productController.updateChosenProduct); //:id is "param"
+routerAdmin.post(
+  "/product/create",
+  restaurantController.verifyRestaurant,
+  // uploadProductImage.single("productImage"),
+  makeUploader("products").array("productImages", 5),
+  productController.createNewProduct
+);
+routerAdmin.post(
+  "/product/:id",
+  restaurantController.verifyRestaurant,
+  productController.updateChosenProduct
+); //:id is "param"
 
 export default routerAdmin;
