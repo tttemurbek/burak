@@ -4,19 +4,21 @@ import { Request } from "express";
 import { Session } from "express-session";
 
 export interface Member {
-  memberType?: MemberType;
-  memberStatus?: MemberStatus;
+  _id: ObjectId;
+  memberType: MemberType;
+  memberStatus: MemberStatus;
   memberNick: string;
   memberPhone: string;
   memberPassword?: string;
   memberAddress?: string;
   memberDesc?: string;
   memberImage?: string;
-  memberPoint: number;
+  memberPoints: number;
+  createAt: Date;
+  updatedAt: Date;
 }
 
 export interface MemberInput {
-  _id: ObjectId;
   memberType?: MemberType;
   memberStatus?: MemberStatus;
   memberNick: string;
@@ -25,14 +27,23 @@ export interface MemberInput {
   memberAddress?: string;
   memberDesc?: string;
   memberImage?: string;
-  memberPoint?: number;
-  createAt: Date;
-  updatedAt: Date;
+  memberPoints?: number;
 }
 
 export interface LoginInput {
   memberNick: string;
   memberPassword: string;
+}
+
+export interface MemberUpdateInput {
+  _id: ObjectId;
+  memberStatus?: MemberStatus;
+  memberNick?: string;
+  memberPhone?: string;
+  memberPassword?: string;
+  memberAddress?: string;
+  memberDesc?: string;
+  memberImage?: string;
 }
 
 export interface AdminRequest extends Request {
