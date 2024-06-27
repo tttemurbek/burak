@@ -5,6 +5,7 @@ import productController from "./controllers/product.controller";
 import makeUploader from "./libs/utils/uploader";
 
 // Restaurant
+
 routerAdmin.get("/", restaurantController.goHome); // get metod i qanday method, ol tek data alip browserda korsetip beredi
 /* bul jerde localhost:3003/admin/ bolgan waqitta, 
 1. restaurantControllerga barip, sol jerdegi goHome metodin iske tusiredi
@@ -32,6 +33,7 @@ routerAdmin.get("/logout", restaurantController.logout);
 routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 
 /* Products*/
+
 routerAdmin.get(
   "/product/all",
   restaurantController.verifyRestaurant,
@@ -49,5 +51,13 @@ routerAdmin.post(
   restaurantController.verifyRestaurant,
   productController.updateChosenProduct
 ); //:id is "param"
+
+/* User */
+
+routerAdmin.get(
+  "/user/all",
+  restaurantController.verifyRestaurant,
+  restaurantController.getUsers
+);
 
 export default routerAdmin;
