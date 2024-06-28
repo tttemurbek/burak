@@ -2,7 +2,7 @@ import express from "express"; // express shaqilip alip atirmiz
 const routerAdmin = express.Router(); //expresstin Router methodin routerAdminga berip atirmiz
 import restaurantController from "./controllers/restaurant.controller"; // rest.controllerdi shaqirip alip atirmiz
 import productController from "./controllers/product.controller";
-import makeUploader from "./libs/utils/uploader";
+import makeUploader from "./libs/utils/uploader"; 
 
 // Restaurant
 

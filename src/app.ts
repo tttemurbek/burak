@@ -9,7 +9,7 @@ about incoming HTTP requests, including the request method, URL, status code, re
 import { MORGAN_FORMAT } from "./libs/types/config";
 /* config.ts da jaratip alingam MORGAN_FORMAT constantasin shaqirip alip atirmiz,
 ol ozinin ishine method[get, post, put, delete], url[/, /admin etc], response-time[ketken waqit],
-status[200-ok, 404-not found etc] */
+status[200-ok, 404-not found etc]  */
 
 import session from "express-session";
 import ConnectMongoDB from "connect-mongodb-session";

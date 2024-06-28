@@ -43,7 +43,7 @@ restaurantController.processSignup = async (
   res: Response
 ) => {
   try {
-    console.log("processSignup");
+    console.log("processSignup"); 
     const file = req.file;
     if (!file)
       throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
