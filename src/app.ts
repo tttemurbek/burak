@@ -17,6 +17,7 @@ import { T } from "./libs/types/common";
 
 const MongoDBStore = ConnectMongoDB(session);
 const store = new MongoDBStore({
+  // qayerga save qilishini addressini yaratib oldik
   uri: String(process.env.MONGO_URL),
   collection: "sessions",
 });
@@ -36,9 +37,9 @@ app.use(
     cookie: {
       maxAge: 1000 * 3600 * 6, // 6 hrs
     },
-    store: store, //18 qatardagi storedi berip atirmiz
+    store: store, //19 qatardagi storedi berip atirmiz
     resave: true, // 10:30-13:30, false bolsa ozgermeydi
-    saveUninitialized: true,
+    saveUninitialized: true, // registration bolmagan memberlar uchun
   })
 );
 

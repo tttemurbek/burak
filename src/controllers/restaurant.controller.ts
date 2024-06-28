@@ -54,7 +54,7 @@ restaurantController.processSignup = async (
 
     const result = await memberService.processSignup(newMember); // call
 
-    req.session.member = result;
+    req.session.member = result; // mongodb sessiosga yozib keladi, frontendga cookiesga SID yozadi
     req.session.save(function () {
       res.redirect("product/all");
     });
