@@ -18,6 +18,7 @@ export enum Message {
   WRONG_PASSWORD = "Wrong password!",
   NOT_AUTHENTICATED = "You are not authenticated, please login first",
   NO_DATA_FOUND = "THERE IS NO DATA",
+  BLOCKED_USER = "You have been blocked, contact restaurant!",
 }
 
 class Errors extends Error {
