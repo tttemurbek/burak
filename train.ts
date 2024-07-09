@@ -1,12 +1,29 @@
-/* R-TASK:
+/* 
+S-TASK:
 
-Shunday function yozing, u string parametrga ega bolsin. String "1+2" holatda pass qilinganda string ichidagi sonlar yigindisini number holatda qaytarsin.
-MASALAN: calculate("1+3") return 4; 
+Shunday function yozing, u numberlardan tashkil topgan array qabul qilsin va osha numberlar orasidagi tushib qolgan sonni topib uni return qilsin
+MASALAN: missingNumber([3, 0, 1]) return 2
 */
 
-function calculate(str: string) {
-  let result = new Function("return " + str)();
-  return result;
+function missingNumber(num: number[]): number {
+  const n = num.length;
+  let totalSum = 0;
+  for (let i = 0; i <= n; i++) {
+    totalSum += i;
+  }
+
+  let numSum = 0;
+  for (let i = 0; i < num.length; i++) {
+    numSum += num[i];
+  }
+
+  const result = totalSum - numSum;
+  if (result > 0) {
+    return result;
+  } else {
+    return -1 * result;
+  }
 }
 
-console.log(calculate("1+2"));
+// Example usage:
+console.log(missingNumber([1, 0, 9]));
