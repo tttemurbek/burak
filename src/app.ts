@@ -10,6 +10,7 @@ import { MORGAN_FORMAT } from "./libs/types/config";
 /* config.ts da jaratip alingam MORGAN_FORMAT constantasin shaqirip alip atirmiz,
 ol ozinin ishine method[get, post, put, delete], url[/, /admin etc], response-time[ketken waqit],
 status[200-ok, 404-not found etc]  */
+import cookieParser from "cookie-parser";
 
 import session from "express-session";
 import ConnectMongoDB from "connect-mongodb-session";
@@ -28,6 +29,7 @@ const app = express(); // instance or Creating an instance of the Express applic
 app.use(express.static(path.join(__dirname, "public"))); // dirname[path core package] ha'm sol jerden public ti al dep aytip atirmiz
 app.use(express.urlencoded({ extended: true })); // post arqali keletugin magliwmatlardi aliwda kerek boladi, get ushin kerek emes, middleware
 app.use(express.json()); // rest api orqali keladigan json formatdagi data ni otkazishga ruxsat beradi, middleware
+app.use(cookieParser()); //cookie parser
 app.use(morgan(MORGAN_FORMAT)); // 9-qatarda shaqirip algan MORGAN_FORMAT bolip esaplanadi, bulda middleware
 
 /** 2-SESSIONS **/
