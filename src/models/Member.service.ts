@@ -85,6 +85,21 @@ class MemberService {
     // 80: new:true, updated sbolgan infoni shigarip ber degen logika ketip atir
   }
 
+  public async getTopUsers(): Promise<Member[]> {
+    const result = await this.memberModel
+      .find({
+        memberStatus: MemberStatus.ACTIVE,
+        memberPoints: { $gte: 1 },
+      })
+      .sort({ memberPoints: -1 })
+      .limit(4)
+      .exec(); // faqat 4 users olib beradi
+    //{$gte => greater than degeni}
+
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    return result;
+  }
+
   // SSR
 
   public async processSignup(input: MemberInput): Promise<Member> {
