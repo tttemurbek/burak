@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import memberController from "./controllers/member.controller";
 // bular burak-react ushin xizmet qiladi
+import uploader from "./libs/utils/uploader";
 
 // Member
 router.post("/member/signup", memberController.signup);
@@ -15,6 +16,12 @@ router.get(
   "/member/detail",
   memberController.verifyAuth,
   memberController.getMemberDetail
+);
+router.post(
+  "/member/update",
+  memberController.verifyAuth,
+  uploader("members").single("memberImage"),
+  memberController.updateMember
 );
 
 // Product

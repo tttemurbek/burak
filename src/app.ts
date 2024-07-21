@@ -27,6 +27,7 @@ const store = new MongoDBStore({
 
 const app = express(); // instance or Creating an instance of the Express application
 app.use(express.static(path.join(__dirname, "public"))); // dirname[path core package] ha'm sol jerden public ti al dep aytip atirmiz
+app.use("/uploads", express.static("./uploads"));
 app.use(express.urlencoded({ extended: true })); // post arqali keletugin magliwmatlardi aliwda kerek boladi, get ushin kerek emes, middleware
 app.use(express.json()); // rest api orqali keladigan json formatdagi data ni otkazishga ruxsat beradi, middleware
 app.use(cookieParser()); //cookie parser
