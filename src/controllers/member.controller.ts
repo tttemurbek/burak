@@ -35,8 +35,8 @@ memberController.getRestaurant = async (req: Request, res: Response) => {
 memberController.signup = async (req: Request, res: Response) => {
   try {
     console.log("signup");
-    const input: MemberInput = req.body; //traditional api
-    const result: Member = await memberService.signup(input); // call
+    const input: MemberInput = req.body;
+    const result: Member = await memberService.signup(input);
     const token = await authService.createToken(result);
     res.cookie("accessToken", token, {
       maxAge: AUTH_TIMER * 3600 * 1000,
@@ -74,7 +74,7 @@ memberController.login = async (req: Request, res: Response) => {
 memberController.logout = (req: ExtendedRequest, res: Response) => {
   try {
     console.log("logout");
-    res.cookie("accessToken", null, { maxAge: 0, httpOnly: true });
+    res.cookie("accessToken", null, { maxAge: 0, httpOnly: true }); // cookie-parser orqali bolyabdi
     res.status(HttpCode.OK).json({ logout: true });
   } catch (err) {
     console.log("Error logout", err);

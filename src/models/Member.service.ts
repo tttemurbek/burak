@@ -47,10 +47,10 @@ class MemberService {
     const member = await this.memberModel
       .findOne(
         {
-          memberNick: input.memberNick,
-          memberStatus: { $ne: MemberStatus.DELETE },
+          memberNick: input.memberNick, // filter bo'limi
+          memberStatus: { $ne: MemberStatus.DELETE }, // $ne is not equal
         },
-        { memberNick: 1, memberPassword: 1, memberStatus: 1 } // majburiy olish, must be taken
+        { memberNick: 1, memberPassword: 1, memberStatus: 1 } // majburiy olish, must be taken, projection section
       )
       .exec();
     if (!member) {

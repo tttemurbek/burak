@@ -11,7 +11,7 @@ import {
 import ProductModel from "../schema/Product.model";
 import { ObjectId } from "mongoose";
 import ViewService from "./View.service";
-import { ViewInput } from "../libs/types/view";
+import { ViewInput, View } from "../libs/types/view";
 import { ViewGroup } from "../libs/enums/view.enum";
 
 class ProductService {
@@ -65,7 +65,7 @@ class ProductService {
 
     // let penen ozgertiriwdin sebebi oni ozgertiremiz
     if (memberId) {
-      //Check view log existence
+      //Check Existence
       const input: ViewInput = {
         memberId: memberId,
         viewRefId: productId,
@@ -73,12 +73,21 @@ class ProductService {
       };
       const existView = await this.viewService.checkViewExistance(input);
 
-      //insert new view log
-
+      console.log("existView", !!existView);
       if (!existView) {
+        // Insert View
         console.log("PLANNING TO INSERT NEW VIEW");
+        await this.viewService.insertMemberView(input);
+
+        // Increase Counts
+        result = await this.productModel
+          .findByIdAndUpdate(
+            productId,
+            { $inc: { productView: +1 } },
+            { new: true }
+          )
+          .exec();
       }
-      // increase target view
     }
 
     return result;

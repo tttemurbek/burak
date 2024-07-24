@@ -20,7 +20,7 @@ const MongoDBStore = ConnectMongoDB(session);
 const store = new MongoDBStore({
   // qayerga save qilishini addressini yaratib oldik
   uri: String(process.env.MONGO_URL),
-  collection: "sessions",
+  collection: "sessions", // tcp
 });
 
 /** 1-ENTERANCE **/
@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, "public"))); // dirname[path core pa
 app.use("/uploads", express.static("./uploads"));
 app.use(express.urlencoded({ extended: true })); // post arqali keletugin magliwmatlardi aliwda kerek boladi, get ushin kerek emes, middleware
 app.use(express.json()); // rest api orqali keladigan json formatdagi data ni otkazishga ruxsat beradi, middleware
-app.use(cookieParser()); //cookie parser
+app.use(cookieParser()); //cookie parser, and interation with cookies
 app.use(morgan(MORGAN_FORMAT)); // 9-qatarda shaqirip algan MORGAN_FORMAT bolip esaplanadi, bulda middleware
 
 /** 2-SESSIONS **/
