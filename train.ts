@@ -1,23 +1,18 @@
-/*
-Y-TASK:
+/* 
+Z-TASK:
 
- Shunday function yozing, uni 2 ta array parapetri bolsin. Function ikkala arrayda ham ishtirok etgan qiymatlarni bir arrayda qaytarsin
- MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3]
+Shunday function yozing, uni sonlardan tashkil topgan array qabul qilsin. Function arraydagi juft sonlarni yigindisini qaytarsin
+MASALAN: sumEvens([1,2,3]) return 2
 */
 
-function findIntersection<T>(array1: T[], array2: T[]): T[] {
-  const result: T[] = [];
-
-  for (let i = 0; i < array1.length; i++) {
-    for (let j = 0; j < array2.length; j++) {
-      if (array1[i] === array2[j] && !result.includes(array1[i])) {
-        result.push(array1[i]);
-        break;
-      }
+function sumEvens(numbers: number[]): number {
+  let sum = 0;
+  for (const num of numbers) {
+    if (num % 2 === 0) {
+      sum += num;
     }
   }
-
-  return result;
+  return sum;
 }
 
-console.log(findIntersection([1, 2, 4, 3], [3, 2, 4, 0]));
+console.log(sumEvens([1, 2, 3]));
