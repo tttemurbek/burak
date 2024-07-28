@@ -1,12 +1,12 @@
 /* 
-ZB-TASK:
+ZC-TASK:
 
-Shunday function yozing, uni 2 ta number parametri bolsin va berilgan sonlar orasidan random raqam return qilsin
-MASALAN: randomBetween(30, 50) return 45
+Shunday function yozing, uni number parametri bolsin va function qabul parametrni selsiy miqdori sifatida qabul qilib uni farenhitga ozgartirib bersin
+MASALAN: celsiusToFahrenheit(0) return 32
 */
 
-function randomBetween(first: number, second: number): number {
-  return Math.ceil(Math.random() * (second - first + 1)) + first;
+function celsiusToFahrenheit(num: number): number {
+  return (num * 9) / 5 + 32;
 }
 
-console.log(randomBetween(25, 39));
+console.log(celsiusToFahrenheit(0));
