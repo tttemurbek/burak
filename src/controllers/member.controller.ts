@@ -26,7 +26,7 @@ memberController.getRestaurant = async (req: Request, res: Response) => {
 
     res.status(HttpCode.OK).json(result);
   } catch (err) {
-    console.log("Error getgetRestaurantTopUsers:", err);
+    console.log("Error getgetRestaurant:", err);
     if (err instanceof Errors) res.status(err.code).json(err);
     else res.status(Errors.standard.code).json(Errors.standard);
   }
@@ -37,6 +37,7 @@ memberController.signup = async (req: Request, res: Response) => {
     console.log("signup");
     const input: MemberInput = req.body;
     const result: Member = await memberService.signup(input);
+    // TODO: type of result, because it is coming from Member.sevice as a json(toJSON)
     const token = await authService.createToken(result);
     res.cookie("accessToken", token, {
       maxAge: AUTH_TIMER * 3600 * 1000,

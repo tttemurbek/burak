@@ -34,6 +34,7 @@ class MemberService {
 
     try {
       const result = await this.memberModel.create(input);
+      // TODO: databasedan shiqqan result variabledin type-i qanday? sebebi biz on keyin jsonga ozgertirip jiberip atirmiz
       result.memberPassword = "";
       return result.toJSON();
     } catch (err) {
