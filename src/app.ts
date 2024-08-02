@@ -1,5 +1,6 @@
 // app.ts bizde express arqali qurilgan server side bolip esaplanadi
 // bul web-applicationlardi ha'm API lardi quriwga jaratilgan
+import cors from "cors";
 import express from "express"; // express external packagin shaqirip alip atirmiz
 import path from "path"; // core model pathdi shaqirip alip atirmiz
 import router from "./router"; // router file package
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, "public"))); // dirname[path core pa
 app.use("/uploads", express.static("./uploads"));
 app.use(express.urlencoded({ extended: true })); // post arqali keletugin magliwmatlardi aliwda kerek boladi, get ushin kerek emes, middleware
 app.use(express.json()); // rest api orqali keladigan json formatdagi data ni otkazishga ruxsat beradi, middleware
+app.use(cors({ credentials: true, origin: true }));
 app.use(cookieParser()); //cookie parser, and interation with cookies
 app.use(morgan(MORGAN_FORMAT)); // 9-qatarda shaqirip algan MORGAN_FORMAT bolip esaplanadi, bulda middleware
 

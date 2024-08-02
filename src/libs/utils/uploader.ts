@@ -1,6 +1,6 @@
-import path from "path";
-import multer from "multer";
-import { v4 } from "uuid"; 
+import path from "path"; //core module
+import multer from "multer"; // external package, which is primarily used for uploading files. 
+import { v4 } from "uuid"; // external packagesm, Create a version 4 (random) UUID
 
 /* MULTER IMAGE UPLOADER */
 function getTargetImageStorage(address: any) {

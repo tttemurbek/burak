@@ -58,3 +58,4 @@ export interface AdminRequest extends Request {
   file: Express.Multer.File;
   files: Express.Multer.File[];
 }
+ 

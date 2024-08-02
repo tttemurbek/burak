@@ -51,12 +51,14 @@ restaurantController.processSignup = async (
       throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
 
     const newMember: MemberInput = req.body; //traditional api
-    newMember.memberImage = file?.path.replace(/\\/g, "/");
+    newMember.memberImage = file?.path.replace(/\\/g, "/"); // optional chain
     newMember.memberType = MemberType.RESTAURANT;
 
     const result = await memberService.processSignup(newMember); // call
 
-    req.session.member = result; // mongodb sessiosga yozib keladi, frontendga cookiesga SID yozadi
+    req.session.member = result; // mongodb sessiosga yozib keladi, frontendga cookiesga session id yozadi
+    console.log("req.session.member:", req.session.member);
+
     req.session.save(function () {
       res.redirect("product/all");
     });

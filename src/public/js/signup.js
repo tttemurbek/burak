@@ -6,6 +6,7 @@ $(function () {
 
   fileTarget.on("change", function () {
     if (window.FileReader) {
+      console.log("FileTarget:", fileTarget);
       const uploadFile = $(this)[0].files[0],
         fileType = uploadFile["type"],
         validImageType = ["image/jpg", "image/jpeg", "image/png"];
@@ -37,7 +38,7 @@ function validateSignupForm() {
     memberPassword === "" ||
     confirmPassword === ""
   ) {
-    alert("Please insert all rquired inputs!");
+    alert("Please insert all required inputs!");
     return false;
   }
 
