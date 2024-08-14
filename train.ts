@@ -1,26 +1,14 @@
 /**
- ZH-TASK:
+ZI-TASK:
 
-Shunday function yozing, u berilgan array parametrni ichidagi eng katta raqamgacha tushib qolgan raqamlarni bir arrayda qaytarsin. 
-MASALAN: findDisappearedNumbers([1, 3, 4, 7]) return [2, 5, 6]
+Shunday function yozing, u function ishga tushgandan 3 soniyadan keyin "Hello World" ni qaytarsin.
+MASALAN: delayHelloWorld("Hello World") return "Hello World"
  */
 
-function findDisappearedNumbers(nums: number[]): number[] {
-  const maxValue = Math.max(nums.length, ...nums);
-  const present = new Array(maxValue);
-
-  for (let num of nums) {
-    present[num - 1] = true;
-  }
-
-  const missingNums = [];
-  for (let i = 0; i < maxValue; i++) {
-    if (!present[i]) {
-      missingNums.push(i + 1);
-    }
-  }
-
-  return missingNums;
+function delayHelloWorld(str: string) {
+  return setTimeout(() => {
+    console.log(str);
+  }, 3000);
 }
 
-console.log(findDisappearedNumbers([1, 5, 7]));
+delayHelloWorld("Hello world");
